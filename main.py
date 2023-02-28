@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, choice
 from sys import argv, exit
 
 from PyQt5 import QtCore, QtWidgets
@@ -30,6 +30,8 @@ class Main(Ui_MainWindow, QMainWindow):
         self.k = 0
         self.setMouseTracking(True)
 
+        self.colors = ['yellow', 'red', 'orange', 'blue', 'lightblue', 'green', 'magenta', 'crimson']
+
     def setupUi(self):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(0, 0, 500, 500))
@@ -48,7 +50,7 @@ class Main(Ui_MainWindow, QMainWindow):
         qp.end()
 
     def drawing(self, qp):
-        qp.setBrush(QColor('Yellow'))
+        qp.setBrush(QColor(choice(self.colors)))
         a = randint(1, 100)
         qp.drawEllipse(self.x, self.y, a, a)
 
